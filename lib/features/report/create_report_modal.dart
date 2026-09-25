@@ -40,12 +40,6 @@ class _CreateReportModalState extends State<CreateReportModal> {
   int _wordCount = 0;
   final int _maxWords = 16;
 
-  static const String _mapsApiKeyAndroid =
-      'AIzaSyAbtOhrxJfQkHac3zKMWHCN9vbzKeJ03zo';
-  static const String _mapsApiKeyWeb =
-      'AIzaSyCDbYBrKCRr0eU--0Di12fpIqpz2ujoQ_g';
-  static String get _mapsApiKey => kIsWeb ? _mapsApiKeyWeb : _mapsApiKeyAndroid;
-
   final Map<String, List<String>> _categoryOptions = {
     "Fasilitas Rusak": [
       "Lampu",
@@ -597,8 +591,12 @@ class _CreateReportModalState extends State<CreateReportModal> {
     }
 
     // Sudah ada lokasi — layout atas: maps preview | bawah: info + tombol
-    final staticMapUrl =
-        'https://maps.geoapify.com/v1/staticmap?style=osm-carto&width=600&height=300&center=lonlat:$_longitude,$_latitude&zoom=16&marker=lonlat:$_longitude,$_latitude;color:%23ff0000;size:medium&apiKey=caa5e20481224996ab88f0837cdba468';
+    final staticMapUrl = ApiConfig.staticMapUrl(
+      latitude: _latitude!,
+      longitude: _longitude!,
+      width: 600,
+      height: 300,
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

@@ -1275,7 +1275,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                             }
                                           },
                                           child: Image.network(
-                                            'https://maps.geoapify.com/v1/staticmap?style=osm-carto&width=400&height=260&center=lonlat:$lng,$lat&zoom=16&marker=lonlat:$lng,$lat;color:%23ff0000;size:medium&apiKey=caa5e20481224996ab88f0837cdba468',
+                                            ApiConfig.staticMapUrl(
+                                              latitude: lat,
+                                              longitude: lng,
+                                              width: 400,
+                                              height: 260,
+                                            ),
                                             width: double.infinity,
                                             height: 180,
                                             fit: BoxFit.cover,

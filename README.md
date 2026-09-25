@@ -57,6 +57,16 @@ Aplikasi juga dapat dijalankan pada browser Chrome dengan perintah berikut:
 flutter run -d chrome
 ```
 
+Map services use runtime configuration so keys are not committed to the frontend. Supply the Geoapify key to Flutter and the Google Maps key to the Android build when those features are needed:
+
+```bash
+flutter run --dart-define=GEOAPIFY_API_KEY=<your-geoapify-key>
+flutter run -d chrome --dart-define=GEOAPIFY_API_KEY=<your-geoapify-key>
+flutter run -P GOOGLE_MAPS_API_KEY=<your-google-maps-key>
+```
+
+Rotate and revoke the keys previously committed to the repository before creating new runtime values.
+
 ## Konfigurasi API Server
 
 Konfigurasi tujuan API berada di [lib/core/api_config.dart](lib/core/api_config.dart). Aplikasi saat ini menggunakan server produksi berikut:
